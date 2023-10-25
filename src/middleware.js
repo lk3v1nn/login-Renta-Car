@@ -12,7 +12,7 @@ export async function middleware(request) {
             }
             
         } catch (error) {
-            console.log('error');
+            console.log('error ');
 
             return NextResponse.redirect(new URL("/login", request.url));
             
