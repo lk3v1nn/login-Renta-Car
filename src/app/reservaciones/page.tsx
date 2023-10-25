@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import axios from "axios";
-import { Tarjeta } from "@/app/components/tarjeta";
+import { Tarjeta } from "../components/Tarjeta";
 import { useRouter } from "next/navigation";
 
 

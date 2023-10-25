@@ -1,19 +1,23 @@
-import { NextResponse } from 'next/server'
+import { NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
 
+export async function middleware(request) {
+    if (request.nextUrl.pathname.includes("/reservaciones")) {
+        try {
+            const token = (request.cookies.get("token"))||'';
+            console.log(token);
+            
+            if(token.value==''){
+                return NextResponse.redirect(new URL("/login", request.url));
+            }
+            
+        } catch (error) {
+            console.log('error');
 
-// This function can be marked `async` if using `await` inside
-export function middleware(request) {
-    // NextResponse.redirect("/");
-    const token = request.cookies.get('token')
-    if (token.value == ''){
-        return NextResponse.redirect(new URL('/login', request.url)
+            return NextResponse.redirect(new URL("/login", request.url));
+            
+        }
     }
-
 
     return NextResponse.next();
 }
-
-// // See "Matching Paths" below to learn more
-// export const config = {
-//   matcher: '/about/:path*',
-// }
