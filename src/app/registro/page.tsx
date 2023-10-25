@@ -3,9 +3,11 @@ import React, { FormEvent, useState } from "react";
 import "@/styles/Login.css";
 import axios, { AxiosError } from "axios";
 import {Alert} from '@/app/components/alert'
+import { useRouter } from "next/navigation";
 
 export default function Login() {
     const [error, setError] = React.useState('');
+    const router = useRouter();
 
     const manejadorSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -18,9 +20,10 @@ export default function Login() {
         const dataUser = { nombre, email: correo, telefono, clave };
         try {
             const respuesta = await axios.post(
-                "http://localhost:8081/api/registro",
+                "http://localhost:5000/api/registro",
                 dataUser
             );
+            router.push('../login')
             console.log(respuesta.data);
         } catch (error) {
             console.log(error);

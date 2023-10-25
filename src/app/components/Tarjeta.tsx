@@ -12,7 +12,7 @@ function Tarjeta(pronp: { Datos: Datos[] }) {
         <>
             {pronp.Datos.map((d) => {
                 return (
-                    <div className="flex align-items-center " key={d.usuario}>
+                    <div className="flex align-items-center " key={d._id}>
                         <div className="d-flex max-w-lg mx-auto m-4 justify-content-center">
                             <div className="bg-white rounded-lg border border-gray-200 w-48 text-gray-900 text-sm font-medium">
                                 <a
